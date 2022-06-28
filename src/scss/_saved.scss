@@ -1,0 +1,52 @@
+@use 'base';
+@use 'layout';
+
+.saved {
+  margin-top: 3rem;
+
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.3em;
+
+    margin-bottom: 1rem;
+  }
+
+  &__container {
+    @include layout.largeScreen() {
+      @include layout.grid(3);
+      column-gap: 3.5rem;
+    }
+  }
+}
+
+.saved-item {
+
+  margin: 1.2rem 0;
+
+  &__header {
+    width: 100%;
+
+    margin-bottom: .4rem;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__colors {
+    background-color: rgba(21, 21, 21, 1);
+    border-radius: 10px;
+
+    padding: 1rem;
+
+    @include layout.flex(row, nowrap, space-between, center);
+  }
+
+  &__color {
+    width: 42px;
+    height: 42px;
+    border: 3px solid #FFFFFF;
+    border-radius: 50%;
+
+  }
+}
