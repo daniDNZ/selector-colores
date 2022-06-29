@@ -24,6 +24,7 @@
     height: 50px;
     border: 3px solid #FFFFFF;
     border-radius: 50%;
+    cursor: pointer;
 
     position: relative;
 
@@ -62,7 +63,6 @@
     }
 
     &--active {
-      background-color: #f1e0bc;
       transform: scale(1.2);
     }
 
@@ -102,6 +102,8 @@
 
   // SELECTOR SAVING
   &__saving {
+    position: relative;
+
     @include layout.largeScreen() {
       justify-self: flex-start;
       align-self: center;
@@ -170,6 +172,27 @@
       position: absolute;
       top: calc(21px - 10.5px); // Mitad alto botón - mitad altura línea
       left: calc(33.5px - 1.5px); // Mitad ancho botón - mitad ancho línea
+    }
+  }
+
+  &__alert {
+    background-color: base.$color-secondary;
+    color: base.$color-primary;
+    border-radius: 9px;
+    font-weight: 600;
+    opacity: 0;
+
+    margin-top: .5rem;
+    padding: .5rem;
+
+    position: absolute;
+
+    transition: opacity .5s ease-in-out;
+
+    &--visible {
+      opacity: 1;
+
+      transition: opacity .5s ease-in-out;
     }
   }
 }
