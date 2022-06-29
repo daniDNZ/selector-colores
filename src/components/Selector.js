@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { CompactPicker } from 'react-color'
-import getPalettes from '../utils/getPalettes'
+import { postPalette } from '../utils/ApiFetch'
 
 const Selector = ({ palettes, setPalettes }) => {
 // Active the focus circle
@@ -47,27 +47,31 @@ const Selector = ({ palettes, setPalettes }) => {
     // Save if the input is not empty and there are less than 8 entries
     if (nameInput.value === '') {
       activeAlert('Nombre vacío')
-    } else if (getPalettes().length >= 8) {
+    } else if (palettes.length >= 8) {
       activeAlert('Máx. 8 favoritos')
     } else {
       const circlesCollection = document.querySelectorAll('.selector__circle')
-      let colorArray = []
-      let newPalettes = []
+      let arrayColors = []
+      // const newPalettes = []
 
       // Add all colors to array
       circlesCollection.forEach(element => {
-        colorArray = [...colorArray, element.style.backgroundColor]
+        arrayColors = [...arrayColors, element.style.backgroundColor]
         // Reset circles
         element.style.backgroundColor = ''
         element.classList.add('selector__circle--empty')
       })
 
-      // Set pallettes with the new one
-      newPalettes = [...palettes, { name: nameInput.value, colorArray }]
-      setPalettes(newPalettes)
+      // New Palette
+      const newPalette = { name: nameInput.value, arrayColors }
 
-      // Save colors
-      window.localStorage.setItem('palettes', JSON.stringify(newPalettes))
+      // Update state
+      const saveData = (data) => {
+        setPalettes(oldPalletes => [...oldPalletes, data])
+      }
+
+      // Fetch new Palette
+      postPalette(newPalette, saveData)
 
       // Clean input
       nameInput.value = ''

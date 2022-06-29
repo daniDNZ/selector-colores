@@ -11,3 +11,6 @@ Conversor de unidades de longitud.
 ### Día 2
 * Programación de la parte lógica de la app
 * Guardado de datos en LocalStorage
+
+### Día 3
+* Modificación de la app para que funcione con la Api

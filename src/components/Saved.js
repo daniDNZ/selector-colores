@@ -1,17 +1,17 @@
 import { useEffect } from 'react'
+import { deletePalette } from '../utils/ApiFetch'
 import SavedItem from './SavedItem'
 
 const Saved = ({ palettes, setPalettes }) => {
+  let listKeys = 0
   // Delete button click event
   const handleDelete = e => {
     // Get index stored in dataset
     const index = e.target.dataset.index
-    // Get List
-    const list = [...palettes]
     // Remove the item from the array
-    list.splice(index, 1)
-    // Store list
-    window.localStorage.setItem('palettes', JSON.stringify(list))
+    const list = palettes.filter(palette => palette.id !== index)
+    // Remove from the server
+    deletePalette(index)
     // Update state
     setPalettes(list)
   }
@@ -37,8 +37,9 @@ const Saved = ({ palettes, setPalettes }) => {
         <h2 className='saved__title'>Saved palletes</h2>
         <div className='saved__container'>
           {
-            palettes.map((item, index) => {
-              return <SavedItem palette={item} key={index} id={index} />
+            palettes.map((item) => {
+              listKeys++
+              return <SavedItem palette={item} key={listKeys} />
             })
           }
         </div>
