@@ -4,6 +4,7 @@ Conversor de unidades de longitud hecho en ReactJS.
 ## Prerrequisitos
 * NodeJS
 * npm
+* [Api Rest (Click para ir al repositorio)](https://github.com/daniDNZ/selector-colores-api)
 
 ## Get Started
 * Instalar las dependencias con `npm install`.
