@@ -1,5 +1,13 @@
 # Conversor de unidades
-Conversor de unidades de longitud.
+Conversor de unidades de longitud hecho en ReactJS.
+
+## Prerrequisitos
+* NodeJS
+* npm
+
+## Get Started
+* Instalar las dependencias con `npm install`.
+* Lanzar la app con `npm start`.
 
 ## Diario de trabajo
 
