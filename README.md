@@ -1,5 +1,5 @@
-# Conversor de unidades
-Conversor de unidades de longitud hecho en ReactJS.
+# Selector de Colores
+Selector de colores hecho en ReactJS.
 
 ## Prerrequisitos
 * NodeJS
